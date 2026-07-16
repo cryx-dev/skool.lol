@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="skool.lol logo" width="200"/>
+</p>
+
 # 🎓 skool.lol
 
 > **For Students. By Students.** Making school more bearable, one function at a time.
@@ -6,7 +10,7 @@
 
 ## ✨ What is skool.lol?
 
-**skool.lol** is a student-created platform designed to help students navigate school, share resources, and connect with each other. Built with pure JavaScript, HTML, and CSS—because sometimes the simplest tools are the best.
+**skool.lol** is a student-created platform designed to help students navigate school, share resources, and connect with each other. Built with pure JavaScript, HTML, and CSS—because sometimes th[...]
 
 Whether you're looking to unblock resources, find study tips, or just need a break from the school grind, skool.lol has got you covered.
 
@@ -47,7 +51,7 @@ Choose one of the providers below to deploy the site quickly. This project is a 
 [![Deploy to Fly](https://img.shields.io/badge/Deploy-Fly-3AB0FF?style=for-the-badge&logo=flyio)](https://fly.io/docs/getting-started/)
 
 
-Note: GitHub Pages deployment is NOT supported for this project — GitHub Pages currently isn't working for this repo, so please use one of the providers above (Netlify, Vercel, Render, Railway, Fly, etc.).
+Note: GitHub Pages deployment is NOT supported for this project — GitHub Pages currently isn't working for this repo, so please use one of the providers above (Netlify, Vercel, Render, Railway, [...]
 
 ---
 
