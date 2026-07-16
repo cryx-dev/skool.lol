@@ -1,46 +1,18 @@
-const back =
-document.getElementById("back");
+document
+.getElementById("back")
+.onclick=()=>history.back();
 
 
-const forward =
-document.getElementById("forward");
+document
+.getElementById("forward")
+.onclick=()=>history.forward();
 
 
-const reload =
-document.getElementById("reload");
+document
+.getElementById("reload")
+.onclick=()=>location.reload();
 
 
-const home =
-document.getElementById("home");
-
-
-
-back.onclick = () => {
-
-history.back();
-
-};
-
-
-
-forward.onclick = () => {
-
-history.forward();
-
-};
-
-
-
-reload.onclick = () => {
-
-location.reload();
-
-};
-
-
-
-home.onclick = () => {
-
-window.location.href="/";
-
-};
+document
+.getElementById("home")
+.onclick=()=>location.href="/";
