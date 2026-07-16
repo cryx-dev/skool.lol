@@ -8,8 +8,7 @@
 
 <title>Skool.LOL</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 
 <style>
@@ -18,78 +17,176 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Inter,sans-serif;
 }
 
 
 :root{
-    --blue:#2563eb;
-    --dark:#000;
-    --panel:#080808;
-}
 
+    --bg:#000;
+    --panel:#050505;
+    --border:#1c1c1c;
+    --text:#fff;
+    --muted:#777;
+    --blue:#2563eb;
+
+}
 
 
 body{
 
+    min-height:100vh;
+
     background:#000;
+
     color:white;
-    height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
     overflow:hidden;
+
+    font-family:Inter,sans-serif;
+
+}
+
+
+/* Background Grid */
+
+.grid{
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+    rgba(255,255,255,.025) 1px,
+    transparent 1px
+    ),
+
+    linear-gradient(
+    90deg,
+    rgba(255,255,255,.025) 1px,
+    transparent 1px
+    );
+
+    background-size:40px 40px;
+
+    mask-image:linear-gradient(
+    black,
+    transparent
+    );
 
 }
 
 
 
-/* =====================
-   BOOT SCREEN
-===================== */
+/* Scanline */
 
-
-.boot-screen{
+.scanline{
 
 position:fixed;
+
+left:0;
+
+right:0;
+
+height:150px;
+
+background:
+
+linear-gradient(
+transparent,
+rgba(37,99,235,.04),
+transparent
+);
+
+animation:scan 8s linear infinite;
+
+}
+
+
+
+@keyframes scan{
+
+from{
+
+transform:translateY(-200px);
+
+}
+
+to{
+
+transform:translateY(100vh);
+
+}
+
+}
+
+
+
+
+
+/* Loader */
+
+
+.loader{
+
+position:fixed;
+
 inset:0;
 
 background:#000;
 
 display:flex;
+
 align-items:center;
+
 justify-content:center;
 
-z-index:9999;
+z-index:20;
 
 transition:1s;
 
-}
-
-
-
-.boot-container{
-
-text-align:center;
 
 }
 
 
 
-.boot-logo{
+.loader-box{
 
-font-size:80px;
+width:420px;
 
-font-weight:900;
+max-width:90%;
 
-letter-spacing:-8px;
+font-family:"JetBrains Mono",monospace;
 
-animation:
-logoIn 1.5s ease;
+}
+
+
+
+.loader-logo{
+
+font-family:Inter;
+
+font-size:55px;
+
+font-weight:800;
+
+letter-spacing:-3px;
+
+margin-bottom:40px;
 
 
 }
 
 
 
-.boot-logo span{
+.loader-logo span{
 
 color:var(--blue);
 
@@ -97,81 +194,23 @@ color:var(--blue);
 
 
 
-@keyframes logoIn{
+.console{
 
-from{
-
-opacity:0;
-
-transform:
-scale(.8)
-translateY(30px);
-
-}
-
-to{
-
-opacity:1;
-
-}
-
-}
-
-
-
-
-.core-ring{
-
-width:150px;
-height:150px;
-
-margin:40px auto;
-
-
-border-radius:50%;
-
-
-border:
-
-2px solid rgba(255,255,255,.08);
-
-
-
-border-top-color:
-
-var(--blue);
-
-
-
-animation:
-
-rotate 1s linear infinite;
-
-
-}
-
-
-
-@keyframes rotate{
-
-100%{
-
-transform:rotate(360deg);
-
-}
-
-}
-
-
-
-
-.system-text{
 
 color:#777;
 
-font-size:13px;
+font-size:14px;
 
-letter-spacing:3px;
+line-height:30px;
+
+
+}
+
+
+
+.console span{
+
+color:#fff;
 
 }
 
@@ -179,51 +218,37 @@ letter-spacing:3px;
 
 .progress{
 
-width:280px;
+margin-top:25px;
 
-height:4px;
+height:3px;
 
 background:#111;
 
-margin:25px auto;
-
 overflow:hidden;
-
-border-radius:10px;
 
 
 }
 
 
 
-.progress span{
-
-display:block;
+.progress div{
 
 height:100%;
 
 width:0;
 
-
-background:
-
-linear-gradient(
-90deg,
-#2563eb,
-#60a5fa
-);
-
+background:var(--blue);
 
 animation:
 
-load 2.5s forwards;
+progress 3s forwards;
 
 
 }
 
 
 
-@keyframes load{
+@keyframes progress{
 
 to{
 
@@ -236,324 +261,45 @@ width:100%;
 
 
 
+/* Main */
 
-.logs{
+.container{
 
-margin-top:20px;
-
-font-size:13px;
-
-color:#444;
-
-line-height:25px;
-
-}
-
-
-
-.logs div{
-
-opacity:0;
-
-animation:
-
-appear .4s forwards;
-
-}
-
-
-.logs div:nth-child(1){
-
-animation-delay:.5s;
-
-}
-
-
-.logs div:nth-child(2){
-
-animation-delay:1s;
-
-}
-
-
-.logs div:nth-child(3){
-
-animation-delay:1.5s;
-
-}
-
-
-.logs div:nth-child(4){
-
-animation-delay:2s;
-
-}
-
-
-
-@keyframes appear{
-
-to{
-
-opacity:1;
-
-color:#888;
-
-}
-
-}
-
-
-
-
-
-/* =====================
-BACKGROUND
-===================== */
-
-
-#canvas{
-
-position:fixed;
-
-inset:0;
-
-z-index:0;
-
-}
-
-
-
-.light{
-
-position:absolute;
-
-width:700px;
-height:700px;
-
-border-radius:50%;
-
-background:#2563eb;
-
-filter:blur(220px);
-
-opacity:.12;
-
-
-}
-
-
-
-.light.one{
-
-top:-300px;
-
-left:-300px;
-
-}
-
-
-
-.light.two{
-
-bottom:-300px;
-
-right:-300px;
-
-}
-
-
-
-
-
-.grid{
-
-position:absolute;
-
-inset:0;
-
-
-background-image:
-
-
-linear-gradient(
-rgba(255,255,255,.025) 1px,
-transparent 1px
-),
-
-
-linear-gradient(
-90deg,
-rgba(255,255,255,.025) 1px,
-transparent 1px
-);
-
-
-
-background-size:55px 55px;
-
-
-mask-image:
-linear-gradient(
-transparent,
-black,
-transparent
-);
-
-
-}
-   /* =====================
-   MAIN APP
-===================== */
-
-
-.app{
-
-height:100vh;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-position:relative;
-
-z-index:5;
-
-perspective:1400px;
-
-}
-
-
-
-.dashboard{
 
 width:900px;
 
-max-width:94%;
+max-width:92%;
 
 
-padding:60px;
+position:relative;
 
 
-
-background:
-
-linear-gradient(
-145deg,
-rgba(255,255,255,.09),
-rgba(255,255,255,.025)
-);
+}
 
 
 
-border:
-
-1px solid rgba(255,255,255,.12);
+.panel{
 
 
-
-border-radius:38px;
-
+background:#030303;
 
 
-backdrop-filter:
+border:1px solid var(--border);
 
-blur(35px);
 
+padding:55px;
+
+
+border-radius:20px;
 
 
 box-shadow:
 
-
-0 50px 150px rgba(0,0,0,.9),
-
-
-0 0 100px rgba(37,99,235,.12);
-
-
-
-position:relative;
-
-
-overflow:hidden;
-
-
-transition:.15s;
-
-
-animation:
-
-dashboardIn 1s ease;
+0 40px 100px rgba(0,0,0,.9);
 
 
 }
 
-
-
-
-.dashboard::before{
-
-
-content:"";
-
-
-position:absolute;
-
-inset:0;
-
-
-
-background:
-
-radial-gradient(
-circle at var(--x,50%) var(--y,50%),
-rgba(255,255,255,.12),
-transparent 35%
-);
-
-
-
-pointer-events:none;
-
-
-}
-
-
-
-
-@keyframes dashboardIn{
-
-
-from{
-
-opacity:0;
-
-transform:
-
-translateY(50px)
-scale(.95);
-
-
-}
-
-to{
-
-opacity:1;
-
-
-}
-
-}
-
-
-
-
-
-/* =====================
-HEADER
-===================== */
 
 
 .brand{
@@ -561,9 +307,9 @@ HEADER
 
 display:flex;
 
-align-items:center;
-
 justify-content:space-between;
+
+align-items:center;
 
 
 }
@@ -573,12 +319,11 @@ justify-content:space-between;
 .logo{
 
 
-font-size:80px;
+font-size:65px;
 
-font-weight:900;
+font-weight:800;
 
-
-letter-spacing:-7px;
+letter-spacing:-5px;
 
 
 }
@@ -587,217 +332,63 @@ letter-spacing:-7px;
 
 .logo span{
 
-
-color:#2563eb;
-
-
-text-shadow:
-
-
-0 0 40px #2563eb;
-
+color:var(--blue);
 
 }
 
 
 
-.version{
+.tag{
 
+font-family:"JetBrains Mono";
 
-padding:10px 18px;
+font-size:12px;
 
+color:#555;
 
-background:
+border:1px solid #222;
 
-rgba(255,255,255,.05);
+padding:8px 12px;
 
-
-border:
-
-1px solid rgba(255,255,255,.1);
-
-
-border-radius:999px;
-
-
-font-size:13px;
-
-
-color:#aaa;
-
+border-radius:20px;
 
 }
-
-
-
 
 
 .subtitle{
 
-
-margin-top:15px;
-
-
-font-size:20px;
-
-
-color:#888;
-
-
-}
-
-
-
-/* =====================
-STATUS CARDS
-===================== */
-
-
-.status-grid{
-
-
-display:grid;
-
-grid-template-columns:
-
-repeat(3,1fr);
-
-
-gap:15px;
-
-
-margin-top:35px;
-
-
-}
-
-
-
-.status-card{
-
-
-padding:20px;
-
-
-background:#050505;
-
-
-border:
-
-1px solid rgba(255,255,255,.08);
-
-
-border-radius:20px;
-
-
-transition:.3s;
-
-
-}
-
-
-
-.status-card:hover{
-
-
-transform:
-
-translateY(-5px);
-
-
-border-color:#2563eb;
-
-
-}
-
-
-
-.status-title{
-
-
-font-size:12px;
+margin-top:12px;
 
 color:#666;
 
-
-text-transform:uppercase;
-
-letter-spacing:2px;
-
+font-size:18px;
 
 }
 
-
-
-.status-value{
-
-
-margin-top:10px;
-
-
-font-size:20px;
-
-font-weight:700;
-
-
-}
-
-
-
-
-
-/* =====================
-DIVIDER
-===================== */
 
 
 .divider{
 
-
 height:1px;
 
+background:#161616;
 
-background:
-
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.2),
-transparent
-);
-
-
-
-margin:40px 0;
-
+margin:35px 0;
 
 }
-
-
-
-
-
-/* =====================
-URL ENGINE
-===================== */
-
-
-.proxy-box{
-
+    .input-area{
 
 display:flex;
 
-gap:15px;
-
+gap:12px;
 
 }
 
 
 
-.url-container{
+.input-box{
 
-
-height:75px;
+height:65px;
 
 flex:1;
 
@@ -807,17 +398,13 @@ display:flex;
 align-items:center;
 
 
-background:#050505;
+background:#000;
 
 
-
-border:
-
-1px solid rgba(255,255,255,.12);
+border:1px solid #222;
 
 
-
-border-radius:24px;
+border-radius:14px;
 
 
 transition:.3s;
@@ -827,35 +414,35 @@ transition:.3s;
 
 
 
-.url-container:focus-within{
-
+.input-box:focus-within{
 
 border-color:#2563eb;
 
 
 box-shadow:
 
-0 0 40px rgba(37,99,235,.25);
+0 0 25px rgba(37,99,235,.15);
 
 
 }
 
 
 
-.url-icon{
+.prompt{
 
+font-family:"JetBrains Mono";
 
-font-size:24px;
+color:#2563eb;
 
-padding-left:25px;
+padding-left:20px;
 
+font-size:18px;
 
 }
 
 
 
 input{
-
 
 width:100%;
 
@@ -864,9 +451,7 @@ height:100%;
 
 background:none;
 
-
 border:none;
-
 
 outline:none;
 
@@ -874,10 +459,12 @@ outline:none;
 color:white;
 
 
-font-size:17px;
+font-family:"JetBrains Mono";
+
+font-size:15px;
 
 
-padding:0 20px;
+padding:0 15px;
 
 
 }
@@ -886,141 +473,64 @@ padding:0 20px;
 
 input::placeholder{
 
-color:#555;
+color:#444;
 
 }
 
 
 
 
-
-/* =====================
-LAUNCH BUTTON
-===================== */
+button{
 
 
-.launch{
+height:65px;
+
+padding:0 35px;
 
 
-height:75px;
-
-
-padding:0 45px;
+background:#2563eb;
 
 
 border:none;
 
 
-border-radius:24px;
+border-radius:14px;
 
 
-background:white;
+color:white;
 
 
-color:black;
-
-
-font-weight:800;
-
-
-font-size:17px;
+font-weight:700;
 
 
 cursor:pointer;
 
 
-transition:.35s;
+font-size:15px;
 
 
-position:relative;
+transition:.25s;
 
 
-overflow:hidden;
+font-family:"JetBrains Mono";
 
 
 }
 
 
 
-.launch:hover{
+button:hover{
 
 
-background:#2563eb;
+background:#3b82f6;
 
 
-color:white;
-
-
-transform:
-
-translateY(-5px);
+transform:translateY(-2px);
 
 
 box-shadow:
 
-0 20px 60px rgba(37,99,235,.5);
-
-
-}
-
-
-
-.launch.loading{
-
-
-pointer-events:none;
-
-
-background:#2563eb;
-
-
-color:white;
-
-
-}
-
-
-
-.launch::after{
-
-
-content:"";
-
-
-position:absolute;
-
-
-inset:0;
-
-
-background:
-
-linear-gradient(
-120deg,
-transparent,
-rgba(255,255,255,.8),
-transparent
-);
-
-
-transform:
-
-translateX(-120%);
-
-
-}
-
-
-
-.launch:hover::after{
-
-
-transform:
-
-translateX(120%);
-
-
-transition:.6s;
+0 10px 30px rgba(37,99,235,.3);
 
 
 }
@@ -1028,10 +538,78 @@ transition:.6s;
 
 
 
+.status{
 
-/* =====================
-FOOTER
-===================== */
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+
+gap:12px;
+
+
+margin-top:30px;
+
+
+}
+
+
+
+.status-card{
+
+
+background:#050505;
+
+
+border:1px solid #181818;
+
+
+padding:18px;
+
+
+border-radius:14px;
+
+
+}
+
+
+
+.status-title{
+
+
+font-size:11px;
+
+
+color:#555;
+
+
+font-family:"JetBrains Mono";
+
+
+text-transform:uppercase;
+
+
+}
+
+
+
+.status-value{
+
+
+margin-top:8px;
+
+
+font-weight:600;
+
+
+}
+
+
+
 
 
 .footer{
@@ -1042,147 +620,188 @@ margin-top:35px;
 
 display:flex;
 
+
 justify-content:space-between;
 
 
-color:#555;
+color:#444;
 
 
-font-size:13px;
+font-family:"JetBrains Mono";
+
+
+font-size:12px;
 
 
 }
 
 
 
+
+
+/* Mobile */
 
 
 @media(max-width:700px){
 
 
-.dashboard{
+body{
 
-padding:35px 25px;
+padding:15px;
 
 }
+
+
+
+.panel{
+
+padding:30px 20px;
+
+}
+
+
+
+.brand{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:15px;
+
+
+}
+
 
 
 .logo{
 
-font-size:50px;
+font-size:45px;
+
+letter-spacing:-3px;
+
 
 }
 
 
-.status-grid{
 
-grid-template-columns:1fr;
+.subtitle{
+
+font-size:15px;
 
 }
 
 
-.proxy-box{
+
+.input-area{
+
 
 flex-direction:column;
 
+
 }
 
 
-.launch{
+
+button{
+
 
 width:100%;
 
+
 }
 
 
+
+.status{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
 .footer{
+
 
 flex-direction:column;
 
 gap:10px;
 
-text-align:center;
 
 }
 
 
+
 }
-   </style>
+
+
+
+
+</style>
 
 </head>
+
+
 
 <body>
 
 
-<!-- BOOT SCREEN -->
-
-<div class="boot-screen" id="boot">
-
-<div class="boot-container">
+<div class="loader" id="loader">
 
 
-<div class="boot-logo">
+<div class="loader-box">
+
+
+<div class="loader-logo">
 
 Skool<span>.LOL</span>
 
 </div>
 
 
-<div class="core-ring"></div>
+<div class="console">
 
 
-<div class="system-text">
+<div>> Initializing proxy core...</div>
 
-SYSTEM INITIALIZATION
+<div>> Checking network...</div>
+
+<div>> Security layer active...</div>
+
+<div>> <span>System ready.</span></div>
+
 
 </div>
 
 
 <div class="progress">
 
-<span></span>
-
-</div>
-
-
-<div class="logs">
-
-<div>✓ Loading Proxy Engine</div>
-
-<div>✓ Checking Security Layer</div>
-
-<div>✓ Connecting Network</div>
-
-<div>✓ Skool.LOL Online</div>
+<div></div>
 
 </div>
 
 
 </div>
 
+
 </div>
 
-
-
-<canvas id="canvas"></canvas>
-
-
-<div class="light one"></div>
-
-<div class="light two"></div>
 
 
 <div class="grid"></div>
 
+<div class="scanline"></div>
 
 
 
-<!-- MAIN -->
 
-<div class="app">
+<div class="container">
 
 
-<div class="dashboard" id="card">
+<div class="panel">
 
 
 
@@ -1196,39 +815,89 @@ Skool<span>.LOL</span>
 </div>
 
 
-<div class="version">
+<div class="tag">
 
-v2.0 PRO
-
-</div>
-
+PROXY ENGINE
 
 </div>
 
+
+</div>
 
 
 
 <div class="subtitle">
 
-The next generation web proxy.
-
-Fast. Private. Secure.
+Fast. Private. Built for the modern web.
 
 </div>
 
 
 
+<div class="divider"></div>
 
-<div class="status-grid">
+
+
+
+<form id="proxy">
+
+
+<div class="input-area">
+
+
+<div class="input-box">
+
+
+<div class="prompt">
+
+>
+
+</div>
+
+
+<input
+
+id="url"
+
+placeholder="enter website..."
+
+autocomplete="off"
+
+
+>
+
+
+</div>
+
+
+
+<button>
+
+START
+
+</button>
+
+
+</div>
+
+
+</form>
+
+
+
+
+
+<div class="status">
 
 
 <div class="status-card">
 
 <div class="status-title">
 
-Server
+System
 
 </div>
+
 
 <div class="status-value">
 
@@ -1244,13 +913,14 @@ Server
 
 <div class="status-title">
 
-Latency
+Network
 
 </div>
 
+
 <div class="status-value">
 
-⚡ 12ms
+⚡ Fast
 
 </div>
 
@@ -1266,6 +936,7 @@ Security
 
 </div>
 
+
 <div class="status-value">
 
 🔒 Active
@@ -1275,64 +946,7 @@ Security
 </div>
 
 
-
 </div>
-
-
-
-
-
-<div class="divider"></div>
-
-
-
-
-
-<form id="proxy">
-
-
-
-<div class="proxy-box">
-
-
-<div class="url-container">
-
-
-<div class="url-icon">
-
-🌐
-
-</div>
-
-
-<input
-
-id="url"
-
-placeholder="Enter website URL..."
-
-autocomplete="off"
-
->
-
-
-</div>
-
-
-
-<button class="launch">
-
-Launch 🚀
-
-</button>
-
-
-
-</div>
-
-
-
-</form>
 
 
 
@@ -1343,14 +957,14 @@ Launch 🚀
 
 <div>
 
-Powered by Node.js
+NODE.JS ENGINE
 
 </div>
 
 
 <div>
 
-© Skool.LOL
+SKOOL.LOL
 
 </div>
 
@@ -1361,7 +975,9 @@ Powered by Node.js
 
 </div>
 
+
 </div>
+
 
 
 
@@ -1370,267 +986,45 @@ Powered by Node.js
 <script>
 
 
-
-/* =====================
-BOOT EXIT
-===================== */
+// Loader
 
 
 setTimeout(()=>{
 
 
-const boot=document.getElementById("boot");
-
-
-boot.style.opacity="0";
+document
+.getElementById("loader")
+.style.opacity="0";
 
 
 setTimeout(()=>{
 
 
-boot.remove();
+document
+.getElementById("loader")
+.remove();
+
 
 
 },1000);
 
 
 
-},3500);
+},3200);
 
 
 
 
 
+// Proxy
 
 
-/* =====================
-MOUSE LIGHT + CARD
-===================== */
-
-
-const card=document.getElementById("card");
-
-
-
-document.addEventListener(
-"mousemove",
-(e)=>{
-
-
-let x=e.clientX;
-
-let y=e.clientY;
-
-
-
-card.style.setProperty(
-"--x",
-x+"px"
-);
-
-
-card.style.setProperty(
-"--y",
-y+"px"
-);
-
-
-
-
-let rotateY=
-
-(x/window.innerWidth-.5)*14;
-
-
-let rotateX=
-
--(y/window.innerHeight-.5)*14;
-
-
-
-card.style.transform=
-
-`
-rotateX(${rotateX}deg)
-rotateY(${rotateY}deg)
-`;
-
-
-
-}
-
-);
-
-
-
-
-
-document.addEventListener(
-"mouseleave",
-()=>{
-
-card.style.transform="";
-
-}
-
-);
-
-
-
-
-
-
-
-
-/* =====================
-PARTICLE ENGINE
-===================== */
-
-
-const canvas=document.getElementById("canvas");
-
-const ctx=canvas.getContext("2d");
-
-
-
-function resize(){
-
-canvas.width=innerWidth;
-
-canvas.height=innerHeight;
-
-}
-
-
-resize();
-
-window.addEventListener(
-"resize",
-resize
-);
-
-
-
-let particles=[];
-
-
-
-for(let i=0;i<160;i++){
-
-
-particles.push({
-
-x:Math.random()*canvas.width,
-
-y:Math.random()*canvas.height,
-
-size:Math.random()*2,
-
-speed:Math.random()*0.5+.1
-
-});
-
-
-}
-
-
-
-
-
-function animate(){
-
-
-ctx.clearRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-
-
-particles.forEach(p=>{
-
-
-p.y-=p.speed;
-
-
-
-if(p.y<0){
-
-p.y=canvas.height;
-
-p.x=Math.random()*canvas.width;
-
-}
-
-
-
-ctx.beginPath();
-
-
-ctx.arc(
-p.x,
-p.y,
-p.size,
-0,
-Math.PI*2
-);
-
-
-
-ctx.fillStyle=
-
-"rgba(255,255,255,.3)";
-
-
-
-ctx.fill();
-
-
-
-});
-
-
-
-requestAnimationFrame(
-animate
-);
-
-
-}
-
-
-animate();
-
-
-
-
-
-
-
-
-
-/* =====================
-PROXY SYSTEM
-===================== */
-
-
-const form=document.getElementById("proxy");
-
-
-const button=document.querySelector(".launch");
-
-
-
-
-form.addEventListener(
-"submit",
-(e)=>{
+document
+.getElementById("proxy")
+.addEventListener("submit",e=>{
 
 
 e.preventDefault();
-
 
 
 let url=document
@@ -1651,40 +1045,10 @@ url="https://"+url;
 
 
 
-
-button.classList.add(
-"loading"
-);
+const btn=document.querySelector("button");
 
 
-
-button.innerHTML=
-
-"Connecting ⚡";
-
-
-
-
-setTimeout(()=>{
-
-button.innerHTML=
-
-"Starting Proxy...";
-
-},700);
-
-
-
-
-setTimeout(()=>{
-
-button.innerHTML=
-
-"Launching 🚀";
-
-
-},1400);
-
+btn.innerHTML="LOADING...";
 
 
 
@@ -1704,13 +1068,38 @@ url;
 
 
 
-},2200);
+},1200);
 
 
 
-}
+});
 
-);
+
+
+
+
+// Cursor subtle movement
+
+
+const panel=document.querySelector(".panel");
+
+
+
+document.addEventListener("mousemove",e=>{
+
+
+let x=(e.clientX/innerWidth-.5)*5;
+
+let y=(e.clientY/innerHeight-.5)*5;
+
+
+
+panel.style.transform=
+
+`rotateX(${-y}deg) rotateY(${x}deg)`;
+
+
+});
 
 
 
