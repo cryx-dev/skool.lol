@@ -6,7 +6,7 @@
 
 ## ✨ What is skool.lol?
 
-**skool.lol** is a student-created platform designed to help students navigate school, share resources, and connect with each other. Built with pure JavaScript, HTML, and CSS—because sometimes the best solutions are the simplest ones.
+**skool.lol** is a student-created platform designed to help students navigate school, share resources, and connect with each other. Built with pure JavaScript, HTML, and CSS—because sometimes the simplest tools are the best.
 
 Whether you're looking to unblock resources, find study tips, or just need a break from the school grind, skool.lol has got you covered.
 
@@ -30,27 +30,24 @@ Whether you're looking to unblock resources, find study tips, or just need a bre
 
 ---
 
-## 📖 Getting Started
+## 📦 Deploy
 
-### Prerequisites
-- A web browser (any modern browser works!)
-- An internet connection
+Choose one of the providers below to deploy the site quickly. This project is a static site (no build step required), so providers like Netlify and Vercel work great.
 
-### Installation
+<!-- Deploy buttons -->
 
-1. Clone the repository:
-```bash
-git clone https://github.com/cryx-dev/skool.lol.git
-cd skool.fun
-```
+[![Deploy to Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?style=for-the-badge&logo=netlify)](https://app.netlify.com/start/deploy?repository=https://github.com/cryx-dev/skool.lol)
 
-2. Open `index.html` in your browser:
-```bash
-open index.html
-# or just double-click the file
-```
+[![Deploy to Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com/import/project?template=https://github.com/cryx-dev/skool.lol)
 
-That's it! No build process, no dependencies. Just pure web magic.
+[![Deploy to Render](https://img.shields.io/badge/Deploy-Render-5C31F8?style=for-the-badge&logo=render)](https://render.com/deploy?repo=https://github.com/cryx-dev/skool.lol)
+
+[![Deploy to Railway](https://img.shields.io/badge/Deploy-Railway-111827?style=for-the-badge&logo=railway)](https://railway.app/new/template?template=https://github.com/cryx-dev/skool.lol)
+
+[![Deploy to Fly](https://img.shields.io/badge/Deploy-Fly-3AB0FF?style=for-the-badge&logo=flyio)](https://fly.io/docs/getting-started/)
+
+
+Note: GitHub Pages deployment is NOT supported for this project — GitHub Pages currently isn't working for this repo, so please use one of the providers above (Netlify, Vercel, Render, Railway, Fly, etc.).
 
 ---
 
