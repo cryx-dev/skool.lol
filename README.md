@@ -81,7 +81,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🌐 Visit Us
 
-Check out the live site: **[skool.lol](https://skool-lol.vercel.app/)**
+Check out the live site: **[https://skool-lol.vercel.app/](https://skool-lol.vercel.app/)**
 
 ---
 
