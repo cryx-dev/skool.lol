@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Skool.LOL</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* =======================
+   Animated Background
+======================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
+}
+
+.background span{
+    position:absolute;
+    bottom:-250px;
+    border-radius:50%;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    animation:float linear infinite;
+}
+
+.background span:nth-child(1){
+    width:320px;
+    height:320px;
+    left:5%;
+    animation-duration:28s;
+}
+
+.background span:nth-child(2){
+    width:180px;
+    height:180px;
+    left:22%;
+    animation-duration:18s;
+}
+
+.background span:nth-child(3){
+    width:420px;
+    height:420px;
+    left:45%;
+    animation-duration:34s;
+}
+
+.background span:nth-child(4){
+    width:240px;
+    height:240px;
+    left:70%;
+    animation-duration:24s;
+}
+
+.background span:nth-child(5){
+    width:160px;
+    height:160px;
+    left:88%;
+    animation-duration:20s;
+}
+
+.background span:nth-child(6){
+    width:260px;
+    height:260px;
+    left:60%;
+    animation-duration:26s;
+}
+
+.background span:nth-child(7){
+    width:120px;
+    height:120px;
+    left:35%;
+    animation-duration:16s;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0) rotate(0deg);
+}
+
+100%{
+transform:translateY(-150vh) rotate(360deg);
+}
+
+}
+
+/* =======================
+   Main Card
+======================= */
+
+.card{
+
+position:relative;
+z-index:2;
+
+width:750px;
+max-width:92%;
+
+padding:55px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:30px;
+
+backdrop-filter:blur(18px);
+
+box-shadow:
+0 0 70px rgba(59,130,246,.12),
+0 0 150px rgba(0,0,0,.5);
+
+text-align:center;
+
+}
+
+.logo{
+
+font-size:58px;
+
+font-weight:800;
+
+letter-spacing:-2px;
+
+margin-bottom:10px;
+
+}
+
+.logo span{
+
+color:#3b82f6;
+
+}
+
+.subtitle{
+
+color:#9ca3af;
+
+margin-bottom:40px;
+
+font-size:17px;
+
+}
+
+/* =======================
+   Form
+======================= */
+
+form{
+
+display:flex;
+
+gap:15px;
+
+}
+
+input{
+
+flex:1;
+
+padding:18px 20px;
+
+font-size:17px;
+
+border-radius:15px;
+
+border:1px solid rgba(255,255,255,.08);
+
+background:#111;
+
+color:white;
+
+outline:none;
+
+transition:.25s;
+
+}
+
+input:focus{
+
+border-color:#3b82f6;
+
+box-shadow:0 0 15px rgba(59,130,246,.35);
+
+}
+
+button{
+
+padding:18px 32px;
+
+border:none;
+
+border-radius:15px;
+
+background:#2563eb;
+
+color:white;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+button:hover{
+
+background:#3b82f6;
+
+transform:translateY(-2px);
+
+box-shadow:0 0 25px rgba(37,99,235,.5);
+
+}
+
+.footer{
+
+margin-top:40px;
+
+font-size:14px;
+
+color:#6b7280;
+
+}
+
+/* =======================
+   Mobile
+======================= */
+
+@media(max-width:700px){
+
+form{
+
+flex-direction:column;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+.logo{
+
+font-size:42px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+<div class="card">
+
+<div class="logo">
+
+Skool<span>.LOL</span>
+
+</div>
+
+<div class="subtitle">
+
+Fast • Secure • Modern Web Proxy
+
+</div>
+
+<form id="unblocker-form">
+
+<input
+id="url"
+type="text"
+placeholder="https://example.com"
+autocomplete="off"
+autofocus>
+
+<button type="submit">
+
+Launch 🚀
+
+</button>
+
+</form>
+
+<div class="footer">
+
+Powered by Node.js
+
+</div>
+
+</div>
+
+<script>
+
+const form=document.getElementById("unblocker-form");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let url=document.getElementById("url").value.trim();
+
+if(url==="") return;
+
+if(!url.startsWith("http"))
+url="https://"+url;
+
+window.location=
+location.protocol+
+"//"+
+location.host+
+"/proxy/"+
+url;
+
+});
+
+</script>
+
+</body>
+</html>
