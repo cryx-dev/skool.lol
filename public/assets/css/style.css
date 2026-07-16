@@ -1,0 +1,613 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+:root{
+
+    --background:#000;
+    --foreground:#fff;
+    --muted:#888;
+    --border:#1f1f1f;
+    --blue:#0070f3;
+
+}
+
+
+
+body{
+
+    min-height:100vh;
+
+    background:var(--background);
+
+    color:var(--foreground);
+
+    font-family:Inter,Arial,sans-serif;
+
+    overflow:hidden;
+
+}
+
+
+
+
+
+/* =====================
+   BACKGROUND
+===================== */
+
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-1;
+
+}
+
+
+
+.grid{
+
+    position:absolute;
+
+    inset:0;
+
+
+    background-image:
+
+    linear-gradient(
+    rgba(255,255,255,.035) 1px,
+    transparent 1px
+    ),
+
+    linear-gradient(
+    90deg,
+    rgba(255,255,255,.035) 1px,
+    transparent 1px
+    );
+
+
+    background-size:40px 40px;
+
+
+    mask-image:
+
+    radial-gradient(
+    ellipse at center,
+    black,
+    transparent 75%
+    );
+
+
+}
+
+
+
+
+
+/* =====================
+   LOADER
+===================== */
+
+
+.loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:100;
+
+    transition:.7s ease;
+
+
+}
+
+
+
+.loader.hide{
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+
+
+
+.loader-logo{
+
+    font-size:48px;
+
+    font-weight:800;
+
+    letter-spacing:-3px;
+
+    text-align:center;
+
+}
+
+
+
+.loader-logo span{
+
+    color:var(--blue);
+
+}
+
+
+
+.loader-bar{
+
+    width:260px;
+
+    height:3px;
+
+    background:#111;
+
+    margin:30px auto 15px;
+
+    overflow:hidden;
+
+}
+
+
+
+.loader-bar div{
+
+    width:0;
+
+    height:100%;
+
+    background:white;
+
+    animation:
+
+    loading 2s forwards;
+
+}
+
+
+
+@keyframes loading{
+
+    to{
+
+        width:100%;
+
+    }
+
+}
+
+
+
+.loader-status{
+
+    text-align:center;
+
+    color:#666;
+
+    font-size:13px;
+
+}
+
+
+
+
+
+/* =====================
+   MAIN
+===================== */
+
+
+
+.container{
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+
+}
+
+
+
+.hero{
+
+    width:100%;
+
+    max-width:850px;
+
+    text-align:center;
+
+}
+
+
+
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border:
+
+    1px solid var(--border);
+
+    border-radius:999px;
+
+    color:#aaa;
+
+    font-size:14px;
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+.badge span{
+
+    width:8px;
+
+    height:8px;
+
+    background:#00c853;
+
+    border-radius:50%;
+
+}
+
+
+
+
+h1{
+
+    font-size:76px;
+
+    line-height:1.05;
+
+    letter-spacing:-5px;
+
+    font-weight:700;
+
+
+}
+
+
+
+.hero p{
+
+    margin-top:25px;
+
+    color:var(--muted);
+
+    font-size:20px;
+
+
+}
+
+
+
+
+/* =====================
+   PROXY BOX
+===================== */
+
+
+.proxy{
+
+    margin-top:50px;
+
+
+}
+
+
+
+form{
+
+    display:flex;
+
+    gap:12px;
+
+    justify-content:center;
+
+}
+
+
+
+.input-wrapper{
+
+
+    height:64px;
+
+    width:520px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+    background:#050505;
+
+
+    border-radius:10px;
+
+
+    padding:0 20px;
+
+
+    transition:.2s;
+
+
+}
+
+
+
+.input-wrapper:focus-within{
+
+
+    border-color:#333;
+
+
+}
+
+
+
+.input-wrapper span{
+
+
+    color:#666;
+
+    font-family:monospace;
+
+
+}
+
+
+
+input{
+
+
+    flex:1;
+
+
+    background:none;
+
+
+    border:none;
+
+
+    outline:none;
+
+
+    color:white;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+
+button{
+
+
+    height:64px;
+
+    padding:0 28px;
+
+
+    background:white;
+
+    color:black;
+
+
+    border:none;
+
+
+    border-radius:10px;
+
+
+    font-weight:600;
+
+
+    font-size:16px;
+
+
+    cursor:pointer;
+
+
+    transition:.2s;
+
+
+}
+
+
+
+button:hover{
+
+
+    background:#ddd;
+
+
+    transform:translateY(-2px);
+
+
+}
+
+
+
+
+
+/* =====================
+   STATS
+===================== */
+
+
+.stats{
+
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:70px;
+
+    margin-top:70px;
+
+
+}
+
+
+
+.stats strong{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+.stats p{
+
+
+    margin-top:8px;
+
+    color:#666;
+
+    font-size:14px;
+
+
+}
+
+
+
+
+footer{
+
+    position:fixed;
+
+    bottom:25px;
+
+    color:#555;
+
+    font-size:14px;
+
+}
+
+
+
+
+
+/* =====================
+   MOBILE
+===================== */
+
+
+@media(max-width:700px){
+
+
+h1{
+
+    font-size:44px;
+
+    letter-spacing:-2px;
+
+}
+
+
+
+.hero p{
+
+    font-size:16px;
+
+}
+
+
+
+form{
+
+    flex-direction:column;
+
+}
+
+
+
+.input-wrapper{
+
+    width:100%;
+
+}
+
+
+
+button{
+
+    width:100%;
+
+}
+
+
+
+.stats{
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+footer{
+
+    position:static;
+
+    margin-top:40px;
+
+}
+
+
+
+}
