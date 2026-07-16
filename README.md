@@ -1,14 +1,14 @@
-# 🎓 skool.fun
+# 🎓 skool.lol
 
 > **For Students. By Students.** Making school more bearable, one function at a time.
 
 ---
 
-## ✨ What is skool.fun?
+## ✨ What is skool.lol?
 
-**skool.fun** is a student-created platform designed to help students navigate school, share resources, and connect with each other. Built with pure JavaScript, HTML, and CSS—because sometimes the best solutions are the simplest ones.
+**skool.lol** is a student-created platform designed to help students navigate school, share resources, and connect with each other. Built with pure JavaScript, HTML, and CSS—because sometimes the best solutions are the simplest ones.
 
-Whether you're looking to unblock resources, find study tips, or just need a break from the school grind, skool.fun has got you covered.
+Whether you're looking to unblock resources, find study tips, or just need a break from the school grind, skool.lol has got you covered.
 
 ---
 
@@ -40,7 +40,7 @@ Whether you're looking to unblock resources, find study tips, or just need a bre
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/cryx-dev/skool.fun.git
+git clone https://github.com/cryx-dev/skool.lol.git
 cd skool.fun
 ```
 
