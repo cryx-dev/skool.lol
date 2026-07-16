@@ -21,181 +21,376 @@ font-family:Inter,sans-serif;
 }
 
 
+:root{
+
+--blue:#2563eb;
+--dark:#000;
+
+}
+
+
+
 body{
 
 height:100vh;
+
 overflow:hidden;
 
 background:#000;
 
 color:white;
 
-display:flex;
-justify-content:center;
-align-items:center;
-
 }
 
 
 
 /* ==========================
-   Loading Screen
+   LOADER
 ========================== */
 
 
 .loader{
 
 position:fixed;
+
 inset:0;
 
 background:#000;
 
 display:flex;
-align-items:center;
+
 justify-content:center;
 
-z-index:100;
+align-items:center;
 
-animation:hideLoader 1.8s forwards;
+z-index:999;
+
 
 }
+
+
+
+.loader-content{
+
+text-align:center;
+
+}
+
 
 
 .loader-logo{
 
-font-size:55px;
+
+font-size:70px;
+
 font-weight:900;
 
-letter-spacing:-4px;
+letter-spacing:-6px;
 
-animation:pulse 1s infinite alternate;
+
+animation:logoPulse 2s infinite;
+
 
 }
+
 
 
 .loader-logo span{
 
-color:#2563eb;
+color:var(--blue);
 
 }
 
 
-@keyframes pulse{
 
-from{
-opacity:.5;
-transform:scale(.95);
+@keyframes logoPulse{
+
+
+0%,100%{
+
+transform:scale(1);
+
+text-shadow:0 0 20px transparent;
+
 }
+
+
+50%{
+
+transform:scale(1.05);
+
+text-shadow:0 0 60px var(--blue);
+
+}
+
+
+}
+
+
+
+.loader-ring{
+
+
+width:140px;
+
+height:140px;
+
+margin:40px auto;
+
+
+border-radius:50%;
+
+
+border:
+
+2px solid rgba(255,255,255,.1);
+
+
+
+border-top-color:var(--blue);
+
+
+
+animation:
+
+spin 1s linear infinite;
+
+
+
+}
+
+
+
+@keyframes spin{
 
 to{
-opacity:1;
-transform:scale(1);
-}
+
+transform:rotate(360deg);
 
 }
 
-
-@keyframes hideLoader{
-
-0%,80%{
-opacity:1;
 }
 
-100%{
+
+
+.loader-text{
+
+
+color:#777;
+
+font-size:14px;
+
+letter-spacing:2px;
+
+
+}
+
+
+
+.loading-lines{
+
+
+margin-top:20px;
+
+font-size:13px;
+
+color:#555;
+
+
+}
+
+
+
+.loading-lines div{
+
+
 opacity:0;
-pointer-events:none;
+
+animation:
+
+showLine .4s forwards;
+
+
+}
+
+
+
+.loading-lines div:nth-child(1){
+
+animation-delay:.5s;
+
+}
+
+
+.loading-lines div:nth-child(2){
+
+animation-delay:1s;
+
+}
+
+
+.loading-lines div:nth-child(3){
+
+animation-delay:1.5s;
+
+}
+
+
+
+@keyframes showLine{
+
+to{
+
+opacity:1;
+
 }
 
 }
+
+
 
 
 
 /* ==========================
- Background
+BACKGROUND
 ========================== */
 
 
-canvas{
+#particles{
 
-position:absolute;
+position:fixed;
+
 inset:0;
-
-opacity:.35;
 
 }
 
 
 
-.glow{
+.background-glow{
+
 
 position:absolute;
 
+
 width:700px;
+
 height:700px;
 
-background:#2563eb;
 
-filter:blur(180px);
+border-radius:50%;
+
+
+background:var(--blue);
+
+
+filter:blur(220px);
+
 
 opacity:.12;
 
+
 }
 
 
 
-.glow.one{
+.glow-left{
 
 top:-300px;
-left:-250px;
+
+left:-300px;
 
 }
 
 
 
-.glow.two{
+.glow-right{
 
-bottom:-350px;
-right:-250px;
+bottom:-300px;
+
+right:-300px;
 
 }
 
 
 
-/* ==========================
- Card
+.grid{
+
+
+position:absolute;
+
+inset:0;
+
+
+background-image:
+
+linear-gradient(
+rgba(255,255,255,.025) 1px,
+transparent 1px
+),
+
+
+linear-gradient(
+90deg,
+rgba(255,255,255,.025) 1px,
+transparent 1px
+);
+
+
+
+background-size:60px 60px;
+
+
+mask-image:
+
+linear-gradient(
+transparent,
+black,
+transparent
+);
+
+
+}
+   /* ==========================
+   MAIN APP
 ========================== */
 
 
-.wrapper{
+.app{
 
-
-perspective:1200px;
+position:relative;
 
 z-index:5;
 
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+perspective:1200px;
 
 }
+
 
 
 .card{
 
 
-width:820px;
+width:850px;
 
-max-width:92vw;
-
-
-padding:65px;
+max-width:92%;
 
 
-position:relative;
+padding:70px;
 
 
 background:
 
 linear-gradient(
 145deg,
-rgba(255,255,255,.08),
+rgba(255,255,255,.09),
 rgba(255,255,255,.025)
 );
 
@@ -203,7 +398,10 @@ rgba(255,255,255,.025)
 border-radius:40px;
 
 
-border:1px solid rgba(255,255,255,.12);
+border:
+
+1px solid rgba(255,255,255,.12);
+
 
 
 backdrop-filter:blur(35px);
@@ -211,27 +409,73 @@ backdrop-filter:blur(35px);
 
 box-shadow:
 
-0 40px 120px rgba(0,0,0,.9);
+
+0 50px 150px rgba(0,0,0,.9),
+
+
+0 0 100px rgba(37,99,235,.12);
 
 
 
-transition:.15s;
+transform-style:preserve-3d;
+
+
+transition:.15s ease;
+
 
 
 overflow:hidden;
+
+
+animation:
+
+cardShow 1s ease;
 
 
 }
 
 
 
+@keyframes cardShow{
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(40px)
+scale(.95);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+
+
+
+/* Animated border */
+
+
 .card::before{
+
 
 content:"";
 
+
 position:absolute;
 
+
 inset:-2px;
+
 
 
 background:
@@ -244,16 +488,42 @@ transparent
 );
 
 
+
 opacity:.25;
 
-animation:borderMove 8s linear infinite;
+
+animation:
+
+borderFlow 6s linear infinite;
+
 
 
 }
 
 
 
-.card>*{
+@keyframes borderFlow{
+
+
+from{
+
+transform:translateX(-60%);
+
+}
+
+
+to{
+
+transform:translateX(60%);
+
+}
+
+
+}
+
+
+
+.card > *{
 
 position:relative;
 
@@ -263,45 +533,38 @@ z-index:2;
 
 
 
-@keyframes borderMove{
 
-0%{
-transform:translateX(-50%);
-}
-
-100%{
-transform:translateX(50%);
-}
-
-}
-
-
-
-/* ==========================
- Logo
-========================== */
+/* LOGO */
 
 
 .logo{
 
 
-font-size:85px;
+font-size:90px;
+
 
 font-weight:900;
 
-letter-spacing:-7px;
+
+letter-spacing:-8px;
+
 
 
 }
 
 
+
 .logo span{
+
 
 color:#2563eb;
 
+
 text-shadow:
 
-0 0 30px #2563eb;
+
+0 0 35px #2563eb;
+
 
 }
 
@@ -311,24 +574,27 @@ text-shadow:
 .subtitle{
 
 
-margin-top:15px;
+margin-top:20px;
 
 
-font-size:20px;
+font-size:21px;
 
 
-color:#999;
+color:#888;
 
 
 }
-    /* ==========================
- Divider
-========================== */
+
+
+
+/* Divider */
 
 
 .divider{
 
+
 height:1px;
+
 
 margin:45px 0;
 
@@ -342,29 +608,30 @@ rgba(255,255,255,.2),
 transparent
 );
 
+
 }
 
 
 
-/* ==========================
- Input Area
-========================== */
+/* INPUT */
 
 
 form{
+
 
 display:flex;
 
 gap:15px;
 
+
 }
 
 
 
-.input-box{
+.input-container{
 
 
-height:70px;
+height:75px;
 
 flex:1;
 
@@ -374,7 +641,9 @@ display:flex;
 align-items:center;
 
 
+
 background:#050505;
+
 
 
 border:
@@ -382,33 +651,41 @@ border:
 1px solid rgba(255,255,255,.12);
 
 
-border-radius:22px;
+
+border-radius:24px;
 
 
-transition:.3s;
+
+transition:.35s;
 
 
 }
 
 
 
-.input-box:hover{
+.input-container:focus-within{
+
 
 border-color:#2563eb;
 
+
 box-shadow:
 
-0 0 30px rgba(37,99,235,.15);
+
+0 0 35px rgba(37,99,235,.25);
+
 
 }
 
 
 
-.icon{
+.input-icon{
 
-font-size:22px;
 
-margin-left:22px;
+font-size:24px;
+
+margin-left:25px;
+
 
 }
 
@@ -417,13 +694,14 @@ margin-left:22px;
 input{
 
 
-width:100%;
-
-
 height:100%;
 
 
+width:100%;
+
+
 padding:0 20px;
+
 
 
 background:none;
@@ -435,10 +713,10 @@ border:none;
 outline:none;
 
 
-font-size:17px;
-
-
 color:white;
+
+
+font-size:17px;
 
 
 }
@@ -455,30 +733,29 @@ color:#555;
 
 
 
-/* ==========================
- Button
-========================== */
+/* BUTTON */
 
 
 button{
 
 
-height:70px;
+height:75px;
 
 
-padding:0 40px;
+padding:0 45px;
 
 
-border-radius:22px;
+border-radius:24px;
 
 
 border:none;
 
 
+
 background:white;
 
 
-color:black;
+color:#000;
 
 
 font-size:17px;
@@ -487,16 +764,17 @@ font-size:17px;
 font-weight:800;
 
 
+
 cursor:pointer;
+
+
+transition:.35s;
 
 
 position:relative;
 
 
 overflow:hidden;
-
-
-transition:.35s;
 
 
 }
@@ -506,18 +784,18 @@ transition:.35s;
 button:hover{
 
 
-transform:
-
-translateY(-5px);
-
-
 background:#2563eb;
 
 
 color:white;
 
 
+transform:translateY(-5px);
+
+
+
 box-shadow:
+
 
 0 20px 60px rgba(37,99,235,.5);
 
@@ -526,7 +804,7 @@ box-shadow:
 
 
 
-button::after{
+button::before{
 
 
 content:"";
@@ -535,19 +813,20 @@ content:"";
 position:absolute;
 
 
-top:0;
-
-
-left:-120%;
+width:100%;
 
 
 height:100%;
 
 
-width:80%;
+left:-120%;
+
+
+top:0;
 
 
 background:
+
 
 linear-gradient(
 120deg,
@@ -557,6 +836,7 @@ transparent
 );
 
 
+
 transition:.6s;
 
 
@@ -564,19 +844,19 @@ transition:.6s;
 
 
 
-button:hover::after{
+button:hover::before{
 
 
-left:150%;
+left:120%;
 
 
 }
 
 
 
-/* ==========================
- Status
-========================== */
+
+
+/* STATUS */
 
 
 .status{
@@ -584,11 +864,15 @@ left:150%;
 
 display:flex;
 
+
 justify-content:center;
+
 
 gap:15px;
 
-margin-top:40px;
+
+margin-top:45px;
+
 
 flex-wrap:wrap;
 
@@ -597,10 +881,13 @@ flex-wrap:wrap;
 
 
 
-.status div{
+.status-box{
 
 
 padding:12px 22px;
+
+
+border-radius:50px;
 
 
 background:
@@ -608,12 +895,11 @@ background:
 rgba(255,255,255,.05);
 
 
+
 border:
 
 1px solid rgba(255,255,255,.1);
 
-
-border-radius:50px;
 
 
 color:#aaa;
@@ -622,29 +908,34 @@ color:#aaa;
 font-size:14px;
 
 
+animation:
+
+statusPulse 3s infinite;
+
+
 }
 
 
 
-.status span{
+@keyframes statusPulse{
 
 
-color:white;
+50%{
+
+border-color:rgba(37,99,235,.5);
 
 }
 
 
+}
 
-/* Footer */
+
 
 
 .footer{
 
 
-text-align:center;
-
-
-margin-top:35px;
+margin-top:40px;
 
 
 color:#555;
@@ -653,13 +944,12 @@ color:#555;
 font-size:14px;
 
 
+text-align:center;
+
+
 }
 
 
-
-/* ==========================
- Mobile
-========================== */
 
 
 @media(max-width:700px){
@@ -670,7 +960,6 @@ font-size:14px;
 padding:40px 25px;
 
 }
-
 
 
 .logo{
@@ -699,185 +988,32 @@ width:100%;
 
 
 }
-
-</style>
-
-
-</head>
-
-
-
-<body>
-
-
-
-<div class="loader">
-
-<div class="loader-logo">
-
-Skool<span>.LOL</span>
-
-</div>
-
-</div>
-
-
-
-<canvas id="particles"></canvas>
-
-
-<div class="glow one"></div>
-
-<div class="glow two"></div>
-
-
-
-
-<div class="wrapper">
-
-
-<div class="card" id="card">
-
-
-
-<div class="logo">
-
-Skool<span>.LOL</span>
-
-</div>
-
-
-<div class="subtitle">
-
-Fast. Private. Modern web access.
-
-</div>
-
-
-
-<div class="divider"></div>
-
-
-
-
-<form id="unblocker-form">
-
-
-<div class="input-box">
-
-
-<div class="icon">
-🌐
-</div>
-
-
-<input
-
-id="url"
-
-placeholder="Enter website URL..."
-
-autocomplete="off"
-
->
-
-
-</div>
-
-
-
-<button>
-
-Launch 🚀
-
-</button>
-
-
-</form>
-
-
-
-
-
-<div class="status">
-
-
-<div>
-🟢 <span>Online</span>
-</div>
-
-
-<div>
-⚡ <span>Fast</span>
-</div>
-
-
-<div>
-🔒 <span>Secure</span>
-</div>
-
-
-</div>
-
-
-
-<div class="footer">
-
-Powered by Node.js • Skool.LOL
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<script>
+   <script>
 
 
 /* ==========================
- Proxy
+   LOADER SYSTEM
 ========================== */
 
 
-document
-.getElementById("unblocker-form")
-.addEventListener("submit",e=>{
+window.addEventListener("load",()=>{
 
 
-e.preventDefault();
+setTimeout(()=>{
 
 
-let url=document
-.getElementById("url")
-.value
-.trim();
+document.querySelector(".loader").style.opacity="0";
 
 
+setTimeout(()=>{
 
-if(!url)return;
+document.querySelector(".loader").remove();
 
-
-
-if(!url.startsWith("http"))
-
-url="https://"+url;
+},800);
 
 
 
-window.location=
-
-location.protocol+
-"//"+
-location.host+
-"/proxy/"+
-url;
+},2500);
 
 
 
@@ -888,14 +1024,66 @@ url;
 
 
 /* ==========================
- 3D Card Motion
+   MOUSE LIGHT
 ========================== */
 
 
-const card=document.getElementById("card");
+const mouseGlow=document.createElement("div");
 
 
-document.addEventListener("mousemove",e=>{
+mouseGlow.style.position="fixed";
+
+mouseGlow.style.width="300px";
+
+mouseGlow.style.height="300px";
+
+mouseGlow.style.borderRadius="50%";
+
+mouseGlow.style.pointerEvents="none";
+
+mouseGlow.style.background="#2563eb";
+
+mouseGlow.style.opacity=".08";
+
+mouseGlow.style.filter="blur(100px)";
+
+mouseGlow.style.zIndex="1";
+
+
+
+document.body.appendChild(mouseGlow);
+
+
+
+document.addEventListener("mousemove",(e)=>{
+
+
+mouseGlow.style.left=
+
+e.clientX-150+"px";
+
+
+mouseGlow.style.top=
+
+e.clientY-150+"px";
+
+
+});
+
+
+
+
+
+/* ==========================
+   3D CARD EFFECT
+========================== */
+
+
+const card=document.querySelector(".card");
+
+
+
+document.addEventListener("mousemove",(e)=>{
 
 
 let x=
@@ -912,8 +1100,11 @@ let y=
 card.style.transform=
 
 `
-rotateY(${x}deg)
+
 rotateX(${-y}deg)
+
+rotateY(${x}deg)
+
 `;
 
 
@@ -924,7 +1115,9 @@ rotateX(${-y}deg)
 
 document.addEventListener("mouseleave",()=>{
 
+
 card.style.transform="";
+
 
 });
 
@@ -932,14 +1125,14 @@ card.style.transform="";
 
 
 
+
+
 /* ==========================
- Canvas Particles
+   CANVAS PARTICLES
 ========================== */
 
 
-const canvas=document
-.getElementById("particles");
-
+const canvas=document.getElementById("particles");
 
 const ctx=canvas.getContext("2d");
 
@@ -951,9 +1144,11 @@ let particles=[];
 
 function resize(){
 
-canvas.width=innerWidth;
 
-canvas.height=innerHeight;
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
 
 }
 
@@ -962,33 +1157,101 @@ canvas.height=innerHeight;
 resize();
 
 
-window.onresize=resize;
+window.addEventListener(
+"resize",
+resize
+);
 
 
 
-for(let i=0;i<90;i++){
+
+class Particle{
 
 
-particles.push({
-
-x:Math.random()*canvas.width,
-
-y:Math.random()*canvas.height,
-
-size:Math.random()*2+1,
-
-speed:Math.random()*.5+.1
+constructor(){
 
 
-});
+this.x=Math.random()*canvas.width;
+
+this.y=Math.random()*canvas.height;
+
+
+this.size=Math.random()*2+0.5;
+
+
+this.speed=Math.random()*0.5+0.1;
+
+
+
+}
+
+
+update(){
+
+
+this.y-=this.speed;
+
+
+
+if(this.y<0){
+
+
+this.y=canvas.height;
+
+
+this.x=Math.random()*canvas.width;
+
+
+}
 
 
 }
 
 
 
+draw(){
 
-function animate(){
+
+ctx.beginPath();
+
+
+ctx.arc(
+this.x,
+this.y,
+this.size,
+0,
+Math.PI*2
+);
+
+
+ctx.fillStyle=
+"rgba(255,255,255,.25)";
+
+
+ctx.fill();
+
+
+
+}
+
+
+}
+
+
+
+for(let i=0;i<150;i++){
+
+particles.push(
+new Particle()
+);
+
+}
+
+
+
+
+
+function particleLoop(){
 
 
 ctx.clearRect(
@@ -1003,45 +1266,129 @@ canvas.height
 particles.forEach(p=>{
 
 
-p.y-=p.speed;
+p.update();
 
+p.draw();
 
-if(p.y<0)
-
-p.y=canvas.height;
-
-
-
-ctx.beginPath();
-
-
-ctx.arc(
-p.x,
-p.y,
-p.size,
-0,
-Math.PI*2
-);
-
-
-ctx.fillStyle=
-"rgba(255,255,255,.25)";
-
-
-ctx.fill();
 
 
 });
 
 
 
-requestAnimationFrame(animate);
+requestAnimationFrame(
+particleLoop
+);
 
 
 }
 
 
-animate();
+particleLoop();
+
+
+
+
+
+
+
+/* ==========================
+   PROXY LAUNCH
+========================== */
+
+
+const form=document
+.getElementById(
+"unblocker-form"
+);
+
+
+
+form.addEventListener(
+"submit",
+(e)=>{
+
+
+e.preventDefault();
+
+
+
+let url=document
+.getElementById("url")
+.value
+.trim();
+
+
+
+if(!url)
+return;
+
+
+
+
+if(!url.startsWith("http"))
+
+url="https://"+url;
+
+
+
+
+
+const button=
+form.querySelector("button");
+
+
+
+button.innerHTML=
+"Connecting... ⚡";
+
+
+
+button.disabled=true;
+
+
+
+
+setTimeout(()=>{
+
+
+button.innerHTML=
+"Launching 🚀";
+
+
+
+},900);
+
+
+
+
+
+setTimeout(()=>{
+
+
+window.location=
+
+location.protocol+
+
+"//"+
+
+location.host+
+
+"/proxy/"+
+url;
+
+
+
+},1600);
+
+
+
+}
+
+);
+
+
+
 
 
 </script>
