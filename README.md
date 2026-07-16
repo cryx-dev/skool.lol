@@ -14,7 +14,7 @@
 [![Website](https://img.shields.io/badge/🌍_Website-Live-00C7B7?style=flat-square)](https://skool-lol.vercel.app/)
 [![GitHub Issues](https://img.shields.io/github/issues/cryx-dev/skool.lol?style=flat-square&color=FF6B6B)](https://github.com/cryx-dev/skool.lol/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/cryx-dev/skool.lol?style=flat-square&color=FFD93D)](https://github.com/cryx-dev/skool.lol/stargazers)
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-%2300D4FF?style=flat-square)](CONTRIBUTING.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-%2300D4FF?style=flat-square)](CONTRIBUTION.md)
 
 </div>
 
@@ -190,7 +190,7 @@ git push origin feature/YourAmazingFeature
 # Then open a PR on GitHub
 ```
 
-📖 **Want more details?** Check out our [Contributing Guide](CONTRIBUTING.md)
+📖 **Want more details?** Check out our [Contributing Guide](CONTRIBUTION.md)
 
 ---
 
@@ -199,10 +199,13 @@ git push origin feature/YourAmazingFeature
 | Resource | Link |
 |----------|------|
 | 🌍 **Live Website** | https://skool-lol.vercel.app/ |
-| 📖 **Contributing Guide** | [CONTRIBUTING.md](CONTRIBUTING.md) |
+| 📖 **Contributing Guide** | [CONTRIBUTION.md](CONTRIBUTION.md) |
+| ❓ **FAQ** | [FAQ.md](FAQ.md) |
 | 🐛 **Report Bugs / Request Features** | [Issues](https://github.com/cryx-dev/skool.lol/issues) |
 | 💬 **Join the Community** | [Discussions](https://github.com/cryx-dev/skool.lol/discussions) |
 | 📜 **License** | [MIT License](LICENSE) |
+| 🛡️ **Security Policy** | [SECURITY.md](SECURITY.md) |
+| 📋 **Code of Conduct** | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) |
 
 ---
 
@@ -223,9 +226,11 @@ git push origin feature/YourAmazingFeature
 
 We're here to help! Reach out in any of these ways:
 
+- **❓ FAQ** → [Check our FAQ](FAQ.md)
 - **📧 Found a bug?** → [Open an Issue](https://github.com/cryx-dev/skool.lol/issues)
 - **💭 Have an idea?** → [Start a Discussion](https://github.com/cryx-dev/skool.lol/discussions)
 - **🌐 Want to see it live?** → [Visit skool-lol.vercel.app](https://skool-lol.vercel.app/)
+- **🔒 Security concern?** → [See SECURITY.md](SECURITY.md)
 
 ---
 
