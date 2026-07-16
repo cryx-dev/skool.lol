@@ -10,7 +10,7 @@
 
 ## ✨ What is skool.lol?
 
-**skool.lol** is a student-created platform designed to help students navigate school, share resources, and connect with each other. Built with pure JavaScript, HTML, and CSS—because sometimes th[...]
+**skool.lol** is a student-created platform designed to help students navigate school, share resources, and connect with each other. Built with pure JavaScript, HTML, and CSS—because sometimes t[...]
 
 Whether you're looking to unblock resources, find study tips, or just need a break from the school grind, skool.lol has got you covered.
 
@@ -28,7 +28,7 @@ Whether you're looking to unblock resources, find study tips, or just need a bre
 
 ## 🛠️ Tech Stack
 
-- **JavaScript** - 96.7% - The backbone of skool.fun
+- **JavaScript** - 96.7% - The backbone of skool.lol
 - **HTML** - 2.9% - Semantic structure
 - **CSS** - 0.4% - Minimal, efficient styling
 
