@@ -80,16 +80,7 @@ form.addEventListener("submit", (event) => {
 
 
         window.location.href =
-
-        location.protocol +
-
-        "//" +
-
-        location.host +
-
-        "/proxy/" +
-
-        encodeURIComponent(url);
+"proxy.html?url=" + encodeURIComponent(url);
 
 
 
