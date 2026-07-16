@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Skool.LOL Proxy</title>
+
+<link rel="stylesheet" href="assets/css/proxy.css">
+
+</head>
+
+
+<body>
+
+
+<div class="proxy-app">
+
+
+<header class="browser-bar">
+
+
+<div class="buttons">
+
+<button id="back">
+←
+</button>
+
+<button id="forward">
+→
+</button>
+
+<button id="reload">
+⟳
+</button>
+
+<button id="home">
+⌂
+</button>
+
+</div>
+
+
+
+<div class="address">
+
+
+<span>
+
+🔒
+
+</span>
+
+
+<div id="url-display">
+
+Loading...
+
+</div>
+
+
+</div>
+
+
+
+<div class="status">
+
+<span></span>
+
+Online
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+<div class="loading" id="loading">
+
+
+<div class="loader"></div>
+
+
+<div class="loading-text">
+
+Connecting...
+
+</div>
+
+
+<div class="steps">
+
+
+<div>
+✓ Resolving target
+</div>
+
+
+<div>
+✓ Starting proxy node
+</div>
+
+
+<div>
+✓ Loading content
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<iframe
+
+id="proxy-frame"
+
+sandbox="allow-forms allow-scripts allow-same-origin"
+
+></iframe>
+
+
+
+</div>
+
+
+
+<script src="assets/js/browser.js"></script>
+
+<script src="assets/js/proxy.js"></script>
+
+
+</body>
+
+</html>
