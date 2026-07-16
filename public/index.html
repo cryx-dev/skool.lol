@@ -8,42 +8,45 @@
 
 <title>Skool.LOL</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,sans-serif;
 }
 
 
 :root{
---blue:#2563eb;
+    --blue:#2563eb;
+    --dark:#000;
+    --panel:#080808;
 }
+
 
 
 body{
 
-height:100vh;
-overflow:hidden;
-
-background:#000;
-
-color:white;
+    background:#000;
+    color:white;
+    height:100vh;
+    overflow:hidden;
 
 }
 
 
-/* ==================
-LOADER
-================== */
+
+/* =====================
+   BOOT SCREEN
+===================== */
 
 
-.loader{
+.boot-screen{
 
 position:fixed;
 inset:0;
@@ -56,61 +59,117 @@ justify-content:center;
 
 z-index:9999;
 
-transition:opacity .8s ease;
+transition:1s;
 
 }
 
 
-.loader-box{
+
+.boot-container{
 
 text-align:center;
 
 }
 
 
-.loader-logo{
 
-font-size:70px;
+.boot-logo{
+
+font-size:80px;
 
 font-weight:900;
 
-letter-spacing:-6px;
+letter-spacing:-8px;
 
-animation:pulse 1.5s infinite;
+animation:
+logoIn 1.5s ease;
+
 
 }
 
 
-.loader-logo span{
+
+.boot-logo span{
 
 color:var(--blue);
 
 }
 
 
-.loader-ring{
 
-width:120px;
-height:120px;
+@keyframes logoIn{
 
-border-radius:50%;
+from{
 
-border:3px solid rgba(255,255,255,.1);
+opacity:0;
 
-border-top-color:var(--blue);
+transform:
+scale(.8)
+translateY(30px);
 
-margin:35px auto;
+}
 
-animation:spin 1s linear infinite;
+to{
+
+opacity:1;
+
+}
 
 }
 
 
-.loader-text{
 
-font-size:14px;
 
-color:#666;
+.core-ring{
+
+width:150px;
+height:150px;
+
+margin:40px auto;
+
+
+border-radius:50%;
+
+
+border:
+
+2px solid rgba(255,255,255,.08);
+
+
+
+border-top-color:
+
+var(--blue);
+
+
+
+animation:
+
+rotate 1s linear infinite;
+
+
+}
+
+
+
+@keyframes rotate{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+
+
+
+.system-text{
+
+color:#777;
+
+font-size:13px;
 
 letter-spacing:3px;
 
@@ -118,7 +177,67 @@ letter-spacing:3px;
 
 
 
-.boot{
+.progress{
+
+width:280px;
+
+height:4px;
+
+background:#111;
+
+margin:25px auto;
+
+overflow:hidden;
+
+border-radius:10px;
+
+
+}
+
+
+
+.progress span{
+
+display:block;
+
+height:100%;
+
+width:0;
+
+
+background:
+
+linear-gradient(
+90deg,
+#2563eb,
+#60a5fa
+);
+
+
+animation:
+
+load 2.5s forwards;
+
+
+}
+
+
+
+@keyframes load{
+
+to{
+
+width:100%;
+
+}
+
+}
+
+
+
+
+
+.logs{
 
 margin-top:20px;
 
@@ -131,55 +250,55 @@ line-height:25px;
 }
 
 
-.boot div{
+
+.logs div{
 
 opacity:0;
 
-animation:boot .5s forwards;
+animation:
+
+appear .4s forwards;
 
 }
 
 
-.boot div:nth-child(1){
+.logs div:nth-child(1){
+
 animation-delay:.5s;
+
 }
 
 
-.boot div:nth-child(2){
+.logs div:nth-child(2){
+
 animation-delay:1s;
+
 }
 
 
-.boot div:nth-child(3){
+.logs div:nth-child(3){
+
 animation-delay:1.5s;
+
+}
+
+
+.logs div:nth-child(4){
+
+animation-delay:2s;
+
 }
 
 
 
-@keyframes boot{
+@keyframes appear{
 
 to{
+
 opacity:1;
-color:#777;
-}
 
-}
+color:#888;
 
-
-
-@keyframes pulse{
-
-50%{
-transform:scale(1.06);
-}
-
-}
-
-
-@keyframes spin{
-
-100%{
-transform:rotate(360deg);
 }
 
 }
@@ -188,12 +307,12 @@ transform:rotate(360deg);
 
 
 
-/* ==================
+/* =====================
 BACKGROUND
-================== */
+===================== */
 
 
-#particles{
+#canvas{
 
 position:fixed;
 
@@ -205,41 +324,45 @@ z-index:0;
 
 
 
-.glow{
+.light{
 
 position:absolute;
 
-width:600px;
-
-height:600px;
+width:700px;
+height:700px;
 
 border-radius:50%;
 
 background:#2563eb;
 
-filter:blur(200px);
+filter:blur(220px);
 
 opacity:.12;
 
-}
-
-
-.glow.one{
-
-top:-250px;
-
-left:-250px;
 
 }
 
 
-.glow.two{
 
-bottom:-250px;
+.light.one{
 
-right:-250px;
+top:-300px;
+
+left:-300px;
 
 }
+
+
+
+.light.two{
+
+bottom:-300px;
+
+right:-300px;
+
+}
+
+
 
 
 
@@ -249,12 +372,15 @@ position:absolute;
 
 inset:0;
 
+
 background-image:
+
 
 linear-gradient(
 rgba(255,255,255,.025) 1px,
 transparent 1px
 ),
+
 
 linear-gradient(
 90deg,
@@ -263,21 +389,22 @@ transparent 1px
 );
 
 
-background-size:60px 60px;
 
-mask-image:linear-gradient(
+background-size:55px 55px;
+
+
+mask-image:
+linear-gradient(
 transparent,
 black,
 transparent
 );
 
+
 }
-
-
-
-/* ==================
-MAIN
-================== */
+   /* =====================
+   MAIN APP
+===================== */
 
 
 .app{
@@ -292,23 +419,23 @@ justify-content:center;
 
 position:relative;
 
-z-index:2;
+z-index:5;
 
-perspective:1200px;
+perspective:1400px;
 
 }
 
 
 
-.card{
+.dashboard{
+
+width:900px;
+
+max-width:94%;
 
 
-width:850px;
+padding:60px;
 
-max-width:92%;
-
-
-padding:65px;
 
 
 background:
@@ -316,8 +443,9 @@ background:
 linear-gradient(
 145deg,
 rgba(255,255,255,.09),
-rgba(255,255,255,.03)
+rgba(255,255,255,.025)
 );
+
 
 
 border:
@@ -325,36 +453,88 @@ border:
 1px solid rgba(255,255,255,.12);
 
 
-border-radius:40px;
+
+border-radius:38px;
 
 
-backdrop-filter:blur(30px);
+
+backdrop-filter:
+
+blur(35px);
+
 
 
 box-shadow:
 
-0 50px 120px rgba(0,0,0,.9);
+
+0 50px 150px rgba(0,0,0,.9),
+
+
+0 0 100px rgba(37,99,235,.12);
+
+
+
+position:relative;
+
+
+overflow:hidden;
 
 
 transition:.15s;
 
 
-animation:show 1s ease;
+animation:
 
+dashboardIn 1s ease;
 
-overflow:hidden;
 
 }
 
 
 
-@keyframes show{
+
+.dashboard::before{
+
+
+content:"";
+
+
+position:absolute;
+
+inset:0;
+
+
+
+background:
+
+radial-gradient(
+circle at var(--x,50%) var(--y,50%),
+rgba(255,255,255,.12),
+transparent 35%
+);
+
+
+
+pointer-events:none;
+
+
+}
+
+
+
+
+@keyframes dashboardIn{
+
 
 from{
 
 opacity:0;
 
-transform:translateY(40px);
+transform:
+
+translateY(50px)
+scale(.95);
+
 
 }
 
@@ -362,110 +542,219 @@ to{
 
 opacity:1;
 
-}
 
-}
-   /* ==================
-CARD CONTENT
-================== */
-
-
-.card::before{
-
-content:"";
-
-position:absolute;
-
-inset:-2px;
-
-
-background:
-
-linear-gradient(
-120deg,
-transparent,
-#2563eb,
-transparent
-);
-
-
-opacity:.25;
-
-
-animation:borderMove 8s linear infinite;
-
-}
-
-
-
-@keyframes borderMove{
-
-from{
-transform:translateX(-70%);
-}
-
-to{
-transform:translateX(70%);
 }
 
 }
 
 
 
-.card > *{
 
-position:relative;
 
-z-index:2;
+/* =====================
+HEADER
+===================== */
+
+
+.brand{
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
 
 }
 
-
-
-/* LOGO */
 
 
 .logo{
 
-font-size:85px;
+
+font-size:80px;
 
 font-weight:900;
 
+
 letter-spacing:-7px;
 
+
 }
+
 
 
 .logo span{
 
-color:var(--blue);
+
+color:#2563eb;
+
 
 text-shadow:
 
-0 0 35px var(--blue);
+
+0 0 40px #2563eb;
+
 
 }
+
+
+
+.version{
+
+
+padding:10px 18px;
+
+
+background:
+
+rgba(255,255,255,.05);
+
+
+border:
+
+1px solid rgba(255,255,255,.1);
+
+
+border-radius:999px;
+
+
+font-size:13px;
+
+
+color:#aaa;
+
+
+}
+
+
 
 
 
 .subtitle{
 
+
 margin-top:15px;
+
 
 font-size:20px;
 
+
 color:#888;
+
+
+}
+
+
+
+/* =====================
+STATUS CARDS
+===================== */
+
+
+.status-grid{
+
+
+display:grid;
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+
+gap:15px;
+
+
+margin-top:35px;
+
+
+}
+
+
+
+.status-card{
+
+
+padding:20px;
+
+
+background:#050505;
+
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+
+border-radius:20px;
+
+
+transition:.3s;
+
+
+}
+
+
+
+.status-card:hover{
+
+
+transform:
+
+translateY(-5px);
+
+
+border-color:#2563eb;
+
+
+}
+
+
+
+.status-title{
+
+
+font-size:12px;
+
+color:#666;
+
+
+text-transform:uppercase;
+
+letter-spacing:2px;
+
+
+}
+
+
+
+.status-value{
+
+
+margin-top:10px;
+
+
+font-size:20px;
+
+font-weight:700;
+
 
 }
 
 
 
 
+
+/* =====================
+DIVIDER
+===================== */
+
+
 .divider{
 
-height:1px;
 
-margin:40px 0;
+height:1px;
 
 
 background:
@@ -477,30 +766,41 @@ rgba(255,255,255,.2),
 transparent
 );
 
+
+
+margin:40px 0;
+
+
 }
 
 
 
 
-/* FORM */
+
+/* =====================
+URL ENGINE
+===================== */
 
 
-form{
+.proxy-box{
+
 
 display:flex;
 
 gap:15px;
 
+
 }
 
 
 
-.input-box{
+.url-container{
 
 
-height:70px;
+height:75px;
 
 flex:1;
+
 
 display:flex;
 
@@ -510,36 +810,45 @@ align-items:center;
 background:#050505;
 
 
+
 border:
 
 1px solid rgba(255,255,255,.12);
 
 
 
-border-radius:22px;
+border-radius:24px;
+
+
+transition:.3s;
 
 
 }
 
 
 
-.input-box:focus-within{
+.url-container:focus-within{
 
-border-color:var(--blue);
+
+border-color:#2563eb;
+
 
 box-shadow:
 
-0 0 30px rgba(37,99,235,.25);
+0 0 40px rgba(37,99,235,.25);
+
 
 }
 
 
 
-.input-icon{
+.url-icon{
 
-font-size:22px;
 
-margin-left:20px;
+font-size:24px;
+
+padding-left:25px;
+
 
 }
 
@@ -550,11 +859,7 @@ input{
 
 width:100%;
 
-
 height:100%;
-
-
-padding:0 20px;
 
 
 background:none;
@@ -569,26 +874,44 @@ outline:none;
 color:white;
 
 
-font-size:16px;
+font-size:17px;
+
+
+padding:0 20px;
+
+
+}
+
+
+
+input::placeholder{
+
+color:#555;
 
 }
 
 
 
 
-button{
+
+/* =====================
+LAUNCH BUTTON
+===================== */
 
 
-height:70px;
+.launch{
 
 
-padding:0 40px;
+height:75px;
 
 
-border-radius:22px;
+padding:0 45px;
 
 
 border:none;
+
+
+border-radius:24px;
 
 
 background:white;
@@ -597,34 +920,108 @@ background:white;
 color:black;
 
 
-font-size:16px;
-
-
 font-weight:800;
+
+
+font-size:17px;
 
 
 cursor:pointer;
 
 
-transition:.3s;
+transition:.35s;
+
+
+position:relative;
+
+
+overflow:hidden;
 
 
 }
 
 
 
-button:hover{
+.launch:hover{
 
-background:var(--blue);
+
+background:#2563eb;
+
 
 color:white;
 
-transform:translateY(-5px);
+
+transform:
+
+translateY(-5px);
 
 
 box-shadow:
 
-0 20px 50px rgba(37,99,235,.4);
+0 20px 60px rgba(37,99,235,.5);
+
+
+}
+
+
+
+.launch.loading{
+
+
+pointer-events:none;
+
+
+background:#2563eb;
+
+
+color:white;
+
+
+}
+
+
+
+.launch::after{
+
+
+content:"";
+
+
+position:absolute;
+
+
+inset:0;
+
+
+background:
+
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.8),
+transparent
+);
+
+
+transform:
+
+translateX(-120%);
+
+
+}
+
+
+
+.launch:hover::after{
+
+
+transform:
+
+translateX(120%);
+
+
+transition:.6s;
+
 
 }
 
@@ -632,56 +1029,27 @@ box-shadow:
 
 
 
-.status{
-
-display:flex;
-
-justify-content:center;
-
-gap:15px;
-
-margin-top:35px;
-
-flex-wrap:wrap;
-
-}
-
-
-
-.status div{
-
-
-padding:10px 20px;
-
-
-border-radius:999px;
-
-
-background:rgba(255,255,255,.05);
-
-
-border:1px solid rgba(255,255,255,.1);
-
-
-color:#888;
-
-
-font-size:14px;
-
-}
-
-
+/* =====================
+FOOTER
+===================== */
 
 
 .footer{
 
-text-align:center;
 
 margin-top:35px;
 
+
+display:flex;
+
+justify-content:space-between;
+
+
 color:#555;
 
+
 font-size:13px;
+
 
 }
 
@@ -691,7 +1059,8 @@ font-size:13px;
 
 @media(max-width:700px){
 
-.card{
+
+.dashboard{
 
 padding:35px 25px;
 
@@ -705,85 +1074,119 @@ font-size:50px;
 }
 
 
-form{
+.status-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.proxy-box{
 
 flex-direction:column;
 
 }
 
 
-button{
+.launch{
 
 width:100%;
 
 }
 
+
+.footer{
+
+flex-direction:column;
+
+gap:10px;
+
+text-align:center;
+
 }
 
-</style>
+
+}
+   </style>
 
 </head>
-
-
 
 <body>
 
 
-<div class="loader" id="loader">
+<!-- BOOT SCREEN -->
 
-<div class="loader-box">
+<div class="boot-screen" id="boot">
 
-<div class="loader-logo">
+<div class="boot-container">
+
+
+<div class="boot-logo">
 
 Skool<span>.LOL</span>
 
 </div>
 
 
-<div class="loader-ring"></div>
+<div class="core-ring"></div>
 
 
-<div class="loader-text">
+<div class="system-text">
 
-STARTING SYSTEM
-
-</div>
-
-
-<div class="boot">
-
-<div>✓ Loading Core</div>
-
-<div>✓ Secure Connection</div>
-
-<div>✓ Proxy Ready</div>
+SYSTEM INITIALIZATION
 
 </div>
 
 
+<div class="progress">
+
+<span></span>
+
+</div>
+
+
+<div class="logs">
+
+<div>✓ Loading Proxy Engine</div>
+
+<div>✓ Checking Security Layer</div>
+
+<div>✓ Connecting Network</div>
+
+<div>✓ Skool.LOL Online</div>
+
+</div>
+
+
 </div>
 
 </div>
 
 
 
+<canvas id="canvas"></canvas>
 
-<canvas id="particles"></canvas>
 
+<div class="light one"></div>
 
-<div class="glow one"></div>
-
-<div class="glow two"></div>
+<div class="light two"></div>
 
 
 <div class="grid"></div>
 
 
 
+
+<!-- MAIN -->
+
 <div class="app">
 
 
-<div class="card" id="card">
+<div class="dashboard" id="card">
+
+
+
+<div class="brand">
 
 
 <div class="logo">
@@ -793,11 +1196,89 @@ Skool<span>.LOL</span>
 </div>
 
 
-<div class="subtitle">
+<div class="version">
 
-Fast. Private. Modern Web Proxy.
+v2.0 PRO
 
 </div>
+
+
+</div>
+
+
+
+
+<div class="subtitle">
+
+The next generation web proxy.
+
+Fast. Private. Secure.
+
+</div>
+
+
+
+
+<div class="status-grid">
+
+
+<div class="status-card">
+
+<div class="status-title">
+
+Server
+
+</div>
+
+<div class="status-value">
+
+🟢 Online
+
+</div>
+
+</div>
+
+
+
+<div class="status-card">
+
+<div class="status-title">
+
+Latency
+
+</div>
+
+<div class="status-value">
+
+⚡ 12ms
+
+</div>
+
+</div>
+
+
+
+<div class="status-card">
+
+<div class="status-title">
+
+Security
+
+</div>
+
+<div class="status-value">
+
+🔒 Active
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
 
 
 
@@ -806,13 +1287,18 @@ Fast. Private. Modern Web Proxy.
 
 
 
+
 <form id="proxy">
 
 
-<div class="input-box">
+
+<div class="proxy-box">
 
 
-<div class="input-icon">
+<div class="url-container">
+
+
+<div class="url-icon">
 
 🌐
 
@@ -823,7 +1309,7 @@ Fast. Private. Modern Web Proxy.
 
 id="url"
 
-placeholder="https://example.com"
+placeholder="Enter website URL..."
 
 autocomplete="off"
 
@@ -834,11 +1320,15 @@ autocomplete="off"
 
 
 
-<button>
+<button class="launch">
 
 Launch 🚀
 
 </button>
+
+
+
+</div>
 
 
 
@@ -847,24 +1337,23 @@ Launch 🚀
 
 
 
-<div class="status">
-
-
-<div>🟢 Online</div>
-
-<div>⚡ Fast</div>
-
-<div>🔒 Secure</div>
-
-
-</div>
-
-
-
 
 <div class="footer">
 
-Powered by Node.js • Skool.LOL
+
+<div>
+
+Powered by Node.js
+
+</div>
+
+
+<div>
+
+© Skool.LOL
+
+</div>
+
 
 </div>
 
@@ -873,6 +1362,7 @@ Powered by Node.js • Skool.LOL
 </div>
 
 </div>
+
 
 
 
@@ -880,68 +1370,110 @@ Powered by Node.js • Skool.LOL
 <script>
 
 
-/* Loader */
 
-
-window.onload=()=>{
-
-
-setTimeout(()=>{
-
-
-document
-.getElementById("loader")
-.style.opacity="0";
-
+/* =====================
+BOOT EXIT
+===================== */
 
 
 setTimeout(()=>{
 
 
-document
-.getElementById("loader")
-.remove();
+const boot=document.getElementById("boot");
+
+
+boot.style.opacity="0";
+
+
+setTimeout(()=>{
+
+
+boot.remove();
+
+
+},1000);
 
 
 
-},800);
-
-
-
-},2600);
-
-
-
-};
+},3500);
 
 
 
 
 
-/* 3D Card */
+
+
+/* =====================
+MOUSE LIGHT + CARD
+===================== */
 
 
 const card=document.getElementById("card");
 
 
 
-document.addEventListener("mousemove",e=>{
+document.addEventListener(
+"mousemove",
+(e)=>{
 
 
-let x=(e.clientX/innerWidth-.5)*12;
+let x=e.clientX;
 
-let y=(e.clientY/innerHeight-.5)*12;
+let y=e.clientY;
+
+
+
+card.style.setProperty(
+"--x",
+x+"px"
+);
+
+
+card.style.setProperty(
+"--y",
+y+"px"
+);
+
+
+
+
+let rotateY=
+
+(x/window.innerWidth-.5)*14;
+
+
+let rotateX=
+
+-(y/window.innerHeight-.5)*14;
 
 
 
 card.style.transform=
 
 `
-rotateY(${x}deg)
-rotateX(${-y}deg)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
 `;
 
-});
+
+
+}
+
+);
+
+
+
+
+
+document.addEventListener(
+"mouseleave",
+()=>{
+
+card.style.transform="";
+
+}
+
+);
 
 
 
@@ -949,12 +1481,16 @@ rotateX(${-y}deg)
 
 
 
-/* Particles */
+
+/* =====================
+PARTICLE ENGINE
+===================== */
 
 
-const canvas=document.getElementById("particles");
+const canvas=document.getElementById("canvas");
 
 const ctx=canvas.getContext("2d");
+
 
 
 function resize(){
@@ -968,49 +1504,63 @@ canvas.height=innerHeight;
 
 resize();
 
-window.onresize=resize;
+window.addEventListener(
+"resize",
+resize
+);
 
 
 
-let dots=[];
+let particles=[];
 
 
 
-for(let i=0;i<120;i++){
+for(let i=0;i<160;i++){
 
-dots.push({
+
+particles.push({
 
 x:Math.random()*canvas.width,
 
 y:Math.random()*canvas.height,
 
-s:Math.random()*2+1,
+size:Math.random()*2,
 
-v:Math.random()*.5+.1
+speed:Math.random()*0.5+.1
 
 });
+
 
 }
 
 
 
 
-function draw(){
+
+function animate(){
 
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
 
 
-dots.forEach(d=>{
+particles.forEach(p=>{
 
 
-d.y-=d.v;
+p.y-=p.speed;
 
 
-if(d.y<0){
 
-d.y=canvas.height;
+if(p.y<0){
+
+p.y=canvas.height;
+
+p.x=Math.random()*canvas.width;
 
 }
 
@@ -1020,16 +1570,19 @@ ctx.beginPath();
 
 
 ctx.arc(
-d.x,
-d.y,
-d.s,
+p.x,
+p.y,
+p.size,
 0,
 Math.PI*2
 );
 
 
 
-ctx.fillStyle="rgba(255,255,255,.25)";
+ctx.fillStyle=
+
+"rgba(255,255,255,.3)";
+
 
 
 ctx.fill();
@@ -1040,24 +1593,40 @@ ctx.fill();
 
 
 
-requestAnimationFrame(draw);
+requestAnimationFrame(
+animate
+);
 
 
 }
 
 
-draw();
+animate();
 
 
 
 
 
-/* Proxy */
 
 
-document
-.getElementById("proxy")
-.addEventListener("submit",e=>{
+
+
+/* =====================
+PROXY SYSTEM
+===================== */
+
+
+const form=document.getElementById("proxy");
+
+
+const button=document.querySelector(".launch");
+
+
+
+
+form.addEventListener(
+"submit",
+(e)=>{
 
 
 e.preventDefault();
@@ -1081,6 +1650,47 @@ url="https://"+url;
 
 
 
+
+
+button.classList.add(
+"loading"
+);
+
+
+
+button.innerHTML=
+
+"Connecting ⚡";
+
+
+
+
+setTimeout(()=>{
+
+button.innerHTML=
+
+"Starting Proxy...";
+
+},700);
+
+
+
+
+setTimeout(()=>{
+
+button.innerHTML=
+
+"Launching 🚀";
+
+
+},1400);
+
+
+
+
+setTimeout(()=>{
+
+
 window.location=
 
 location.protocol+
@@ -1094,7 +1704,14 @@ url;
 
 
 
-});
+},2200);
+
+
+
+}
+
+);
+
 
 
 </script>
